@@ -138,6 +138,19 @@ public class Administrador extends Stage {
     }
 
     private void registrarDatosPlato() {
+        objP.setNombrePlato(nombrePlato.getText());
+        objP.setDescPlato(descPlato.getText());
+        objP.setPrecioPlato(Double.parseDouble(precioPlato.getText()));
+        objP.registrarPlato();
+        Alert complete = new Alert(Alert.AlertType.INFORMATION);
+        complete.setTitle("Mensaje del sistema");
+        complete.setHeaderText("Registro completo");
+        complete.setContentText("Se ha completado el registro con éxito");
+        complete.showAndWait();
+        nombrePlato.setText(null);
+        descPlato.setText(null);
+        precioPlato.setText(null);
+        frmTaco.setVisible(false);
     }
 
     private void registrarDatosBebida() {

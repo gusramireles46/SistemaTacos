@@ -48,7 +48,7 @@ public class PlatoDAO {
 
     private PlatoDAO objP;
 
-    public void insPlato(){
+    public void registrarPlato(){
         String sql = "INSERT INTO tbl_plato(nombrePlato, descPlato, precioPlato) VALUES('"+nombrePlato+"', '"+descPlato+"', "+precioPlato+");";
         try {
             PreparedStatement stmt = Conexion.conn.prepareStatement(sql);

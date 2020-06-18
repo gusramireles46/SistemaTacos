@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class PlatoDAO {
 
@@ -46,6 +47,16 @@ public class PlatoDAO {
     }
 
     private PlatoDAO objP;
+
+    public void insPlato(){
+        String sql = "INSERT INTO tbl_plato(nombrePlato, descPlato, precioPlato) VALUES('"+nombrePlato+"', '"+descPlato+"', "+precioPlato+");";
+        try {
+            PreparedStatement stmt = Conexion.conn.prepareStatement(sql);
+            stmt.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 
     public ObservableList<PlatoDAO> selAllPlatos(){
         ObservableList<PlatoDAO> listaPlato = FXCollections.observableArrayList();

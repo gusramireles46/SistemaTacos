@@ -89,6 +89,7 @@ public class Main extends Application {
         _btnAcceso.setOnAction(e-> {
             //vbox.setEffect(blur);
             new UsuariosDAO().validarUsuario(_pwdUsuario.getText());
+            _pwdUsuario.setText("");
             primaryStage.close();
         });
         escena.getStylesheets().add("sample/style/estilos.css");

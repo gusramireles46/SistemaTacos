@@ -12,23 +12,27 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import sample.Main;
 import sample.Models.BebidaDAO;
+import sample.Models.PlatoDAO;
 
 public class Administrador extends Stage {
     BebidaDAO objB;
+    PlatoDAO objP;
     Scene escena;
     HBox hbox;
     VBox vbox, titulo, stats, frmBebida, frmTaco;
     Label title;
     PieChart chart;
     HBox actButtons, actButtonP;
-    Button btnGrafico, btnAddTaco, btnAddBebida, btnRegistrarBebida, btnCancelBebida, btnCancelTaco, btnRegistrarTaco;
+    Button btnGrafico, btnAddTaco, btnAddBebida, btnRegistrarBebida, btnCancelBebida, btnCancelTaco, btnRegistrarTaco, btnSalir;
     StackPane root;
     TextField nombreBebida, descBebida, precioBebida, nombrePlato, descPlato, precioPlato;
 
 
     public Administrador(){
         CrearGUI();
+        objP = new PlatoDAO();
         objB = new BebidaDAO();
         this.setTitle("Administrador");
         this.setMaximized(true);
@@ -38,6 +42,13 @@ public class Administrador extends Stage {
 
     private void CrearGUI() {
         root = new StackPane();
+        btnSalir = new Button("Salir");
+        ImageView salir = new ImageView("sample/image/cerrar.png");
+        btnSalir.setGraphic(salir);
+        btnSalir.setOnAction(event1 -> {
+            this.close();
+            Main.stage.show();
+        });
         vbox = new VBox();
         titulo = new VBox();
         stats = new VBox();
@@ -57,7 +68,7 @@ public class Administrador extends Stage {
         titulo.getChildren().addAll(title);
         titulo.setAlignment(Pos.TOP_CENTER);
         titulo.setSpacing(80);
-        hbox.getChildren().addAll(btnAddTaco, btnAddBebida, btnGrafico);
+        hbox.getChildren().addAll(btnAddTaco, btnAddBebida, btnSalir);
         hbox.setSpacing(15);
         hbox.setAlignment(Pos.CENTER);
 
@@ -76,6 +87,10 @@ public class Administrador extends Stage {
 
         frmTaco.getChildren().addAll(nombrePlato, descPlato, precioPlato, actButtonP);
         frmTaco.setVisible(false);
+
+        btnRegistrarTaco.setOnAction(eTacoR -> {
+            registrarDatosPlato();
+        });
 
         btnCancelTaco.setOnAction(eTaco -> {
             frmTaco.setVisible(false);
@@ -122,6 +137,9 @@ public class Administrador extends Stage {
         escena = new Scene(root, 500,500);
     }
 
+    private void registrarDatosPlato() {
+    }
+
     private void registrarDatosBebida() {
         objB.setNombreBebida(nombreBebida.getText());
         objB.setDescBebida(descBebida.getText());
@@ -132,6 +150,9 @@ public class Administrador extends Stage {
         complete.setHeaderText("Registro completo");
         complete.setContentText("Se ha completado el registro con éxito");
         complete.showAndWait();
+        nombreBebida.setText(null);
+        descBebida.setText(null);
+        precioBebida.setText(null);
         frmBebida.setVisible(false);
     }
 }

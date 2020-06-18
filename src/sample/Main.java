@@ -22,6 +22,7 @@ public class Main extends Application {
     public static VBox vbox, vboxUsr, vboxPwd;
     public static Scene escena;
     public static StackPane pane;
+    public static Stage stage;
 
     @Override
     public void start(Stage primaryStage){
@@ -83,11 +84,11 @@ public class Main extends Application {
         primaryStage.getIcons().add(ico);
         primaryStage.setScene(escena);
         primaryStage.show();
+        stage = primaryStage;
 
         _btnAcceso.setOnAction(e-> {
             //vbox.setEffect(blur);
             new UsuariosDAO().validarUsuario(_pwdUsuario.getText());
-            primaryStage.close();
         });
         escena.getStylesheets().add("sample/style/estilos.css");
         escena.getStylesheets().add("sample/style/main.css");

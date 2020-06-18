@@ -2,3 +2,13 @@
     -fx-background-image: url('../image/mesas.jpg');
     -fx-background-size: cover, auto;
 }
+.tab{
+    -fx-pref-width: 140;
+    -fx-pref-height: 60;
+}
+.tab-header-background{
+    -fx-background-color: #CCCF99;
+}
+.jfx-tab-pane .tab-selected-line{
+    -fx-border-color: #B83F01;
+}

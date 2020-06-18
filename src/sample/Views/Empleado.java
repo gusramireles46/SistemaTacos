@@ -30,7 +30,7 @@ public class Empleado extends Stage {
     private int clvEmpleado;
     private byte clvPuesto;
     private String nombre, apellidos;
-    static int i, j, cont;
+    static int[][] lugar1, lugar2;
     private GridPane gprMesas1, gprMesas2;
     Image ico = new Image("sample/image/ico.png");
     ImageView _img= new ImageView("sample/image/logo.png");
@@ -119,58 +119,48 @@ public class Empleado extends Stage {
         _vboxTitle.setAlignment(Pos.TOP_CENTER);
         _h1.getChildren().addAll(_btnOrden, _btnLista);
         _btnMesas1 = new JFXButton[5][3];
-        NuevaOrden.noMesa = new int[5][3];
         //NuevaOrden.noMesa = new int[5][3];
-        cont = 1;
-        int[][] lugar1 = new int[5][3];
-        for(i = 0; i < 5; i ++) {
-            for (j = 0; j < 3; j++) {
-                lugar1[i][j] = cont ++;
-                System.out.println(lugar1[i][j]);
-            }
-        }
-        int[][] lugar2 = new int[5][3];
-        for(i = 0; i < 5; i ++) {
-            for (j = 0; j < 3; j++) {
-                lugar2[i][j] = cont ++;
-                System.out.println(lugar2[i][j]);
-            }
-        }
-        for(i = 0; i < 5; i ++){
-            for(j = 0; j < 3; j ++){
+        int cont = 1;
+        lugar1 = new int[5][3];
+        for(int i = 0; i < 5; i ++){
+            for(int j = 0; j < 3; j ++){
                 _btnMesas1[i][j] = new JFXButton();
                 _btnMesas1[i][j].setPrefSize(100,100);
                 _btnMesas1[i][j].setStyle("-fx-background-color:#8B5342;-fx-padding:15;-fx-opacity: 0.75;-fx-border-color:BLACK;-fx-border-radius: 20px;-fx-background-radius: 21px;");
                 _btnMesas1[i][j].getStyleClass().add("button-raised");
+                _btnMesas1[i][j].setGraphic(new ImageView(_imgMesa));
+                lugar1[i][j] = cont++;
                 int finalI = i;
                 int finalJ = j;
-                _btnMesas1[i][j].setGraphic(new ImageView(_imgMesa));
-
-                //int finalLugar1 = cont++;
-                //lugar1[i][j] = cont++;
-                //_btnMesas1[i][j].setId(""+cont++);
                 _btnMesas1[i][j].setOnMouseClicked(e ->{
+                    //System.out.println(lugar1[finalI][finalJ]);
                     new NuevaOrden();
-                    //NuevaOrden.noMesa[i][j] = cont++;
+                    NuevaOrden.noMesa = lugar1[finalI][finalJ];
+                    NuevaOrden.main.close();
+                    new NuevaOrden();
                 });
                 gprMesas1.add(_btnMesas1[i][j],i,j);
                 //System.out.println("Adentro "+ lugar1[i][j]);
             }
         }
         _btnMesas2 = new JFXButton[5][3];
-        cont = 1;
-        for(i = 0; i < 5; i ++){
-            for(j = 0; j < 3; j ++){
+        cont = 21;
+        lugar2 = new int[5][3];
+        for(int i = 0; i < 5; i ++){
+            for(int j = 0; j < 3; j ++){
                 _btnMesas2[i][j] = new JFXButton();
                 _btnMesas2[i][j].setPrefSize(100,100);
                 _btnMesas2[i][j].setStyle("-fx-background-color:#8B5342;-fx-padding:15;-fx-opacity: 0.75;-fx-border-color:BLACK;-fx-border-radius: 20px;-fx-background-radius: 21px;");
                 _btnMesas2[i][j].getStyleClass().add("button-raised");
+                _btnMesas2[i][j].setGraphic(new ImageView(_imgMesa));
+                lugar2[i][j] = cont++;
                 int finalI = i;
                 int finalJ = j;
-                _btnMesas2[i][j].setGraphic(new ImageView(_imgMesa));
-                //_btnMesas2[i][j].setId(""+cont++);
-                lugar2[i][j] = cont++;
                 _btnMesas2[i][j].setOnMouseClicked(e ->{
+                    //System.out.println(lugar2[finalI][finalJ]);
+                    new NuevaOrden();
+                    NuevaOrden.noMesa = lugar2[finalI][finalJ];
+                    NuevaOrden.main.close();
                     new NuevaOrden();
                 });
                 //System.out.println("Afuera "+ lugar2[i][j]);

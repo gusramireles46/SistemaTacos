@@ -1,0 +1,4 @@
+.root{
+    -fx-background-image: url('../image/taco.jpg');
+    -fx-background-size: cover, auto;
+}

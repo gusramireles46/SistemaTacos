@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.text.Text;
+import sample.Views.Administrador;
 import sample.Views.Empleado;
 import sample.Main;
 
@@ -103,7 +104,7 @@ public class UsuariosDAO {
                     if(result.get() == ButtonType.OK){
                         new Empleado();
                         Main.vbox.setEffect(null);
-                        Main.stage.close();
+                        //Main.stage.close();
                     } else {
                         System.out.println("Finalizado");
                         Main.vbox.setEffect(null);
@@ -116,16 +117,17 @@ public class UsuariosDAO {
                     bienvenido.setContentText("Redirigiendo a admin");
                     Optional<ButtonType> result = bienvenido.showAndWait();
                     if(result.get() == ButtonType.OK){
+                        new Administrador();
                         Main.vbox.setEffect(null);
-                        Main.stage.close();
+                        //Main.stage.close();
                     } else {
                         System.out.println("Finalizado");
                         Main.vbox.setEffect(null);
                     }
                     System.out.println("Redirigiendo a admin");
-                    Main.stage.close();
-                    Platform.exit();
-                    System.exit(0);
+                    //Main.stage.close();
+                    //Platform.exit();
+                    //System.exit(0);
                 }
             }
             else {

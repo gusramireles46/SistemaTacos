@@ -75,8 +75,8 @@ public class Main extends Application {
         _btnAcceso.disableProperty().bind(bb);
 
         //Conexion a la DB
-        //Conexion.crearConexionMariaDB();
-        Conexion.crearConexionMySQL();
+        Conexion.crearConexionMariaDB();
+        //Conexion.crearConexionMySQL();
 
         // Construccion de la escena
         escena = new Scene(vbox, 1280, 720);
@@ -89,6 +89,7 @@ public class Main extends Application {
         _btnAcceso.setOnAction(e-> {
             //vbox.setEffect(blur);
             new UsuariosDAO().validarUsuario(_pwdUsuario.getText());
+            primaryStage.close();
         });
         escena.getStylesheets().add("sample/style/estilos.css");
         escena.getStylesheets().add("sample/style/main.css");

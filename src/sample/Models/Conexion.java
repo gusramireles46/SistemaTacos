@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class Conexion {
     static int lport = 80;
 
-    private static final String hostdb = "127.0.0.1";
+    private static final String hostdb = "localhost";
     private static final String userdb = "tacoadmin";
     private static final String passdb = "tacosalpastor";
     private static final String userdbmysql = "usuario_tacosotso";

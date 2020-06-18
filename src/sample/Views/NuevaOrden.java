@@ -2,17 +2,22 @@ package sample.Views;
 
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXPopup;
+import com.jfoenix.controls.JFXTabPane;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import sample.Main;
 import sample.Models.Conexion;
 
 import java.io.IOException;
@@ -34,23 +39,27 @@ public class NuevaOrden extends Stage {
     //ObservableList<String> items = FXCollections.observableArrayList("Cricket", "Chess", "Kabaddy", "Badminton","Football", "Golf", "CoCo", "car racing");
     ObservableList<String> itemsPlatos = FXCollections.observableArrayList();
     ObservableList<String> itemsBebidas = FXCollections.observableArrayList();
+    JFXTabPane tpMenu;
+    Tab tabPlatos, tabBebidas;
     Label lblPlatos, lblBebidas;
     Image ico = new Image("sample/image/ico.png");
-    HBox hbox;
+    Image dishes = new Image("sample/image/dishes.png", 50,50,false,false);
+    Image drinks = new Image("sample/image/drinks.png", 50,50,false,false);
+    HBox hBox;
     VBox vBox;
-    public static int[][] noMesa;
-    public static int lugarI, lugarJ;
+    static int noMesa;
+    static Stage main;
 
     public NuevaOrden(){
         CrearGUI();
-        noMesa = new int[5][3];
-        this.setTitle("Menu Orden A Mesa No :"+noMesa[lugarI][lugarJ]);
-        this.setTitle("Menu Orden Mesa");
+        this.setTitle("Menu Orden A Mesa No :"+noMesa);
+        //this.setTitle("Menu Orden Mesa");
         this.setScene(escena);
         //this.setMaximized(true);
         this.show();
         this.getIcons().add(ico);
         //System.out.println("Mesa No: "+noMesa);
+        main = this;
     }
 
     public void fillPlatos(){
@@ -93,37 +102,25 @@ public class NuevaOrden extends Stage {
         ResultSet res;
         lstPlatos = new JFXListView<String>();
         lstPlatos.setItems(itemsPlatos);
-        lstPlatos.setMaxSize(300,450);
-        /*
-        lstPlatos.setOnMouseClicked(event -> {
-            try {
-                String consulta = "SELECT nombrePlanto FROM tbl_plato WHERE nombrePlato = ?";
-                PreparedStatement stmt = con.prepareStatement(consulta);
-                res = stmt.executeQuery();
-            }catch (Exception e){
-                System.out.println(e.getMessage());
-            }
-
-        });
-        */
+        //lstPlatos.setMaxSize(300,450);
         BorderPane.setMargin(lstPlatos,new Insets(10));
 
         lstBebidas = new JFXListView<String>();
         lstBebidas.setItems(itemsBebidas);
-        lstBebidas.setMaxSize(300,450);
-        /*
-        lstPlatos.setOnMouseClicked(event -> {
-            try {
-                String consulta = "SELECT nombrePlanto FROM tbl_plato WHERE nombrePlato = ?";
-                PreparedStatement stmt = con.prepareStatement(consulta);
-                res = stmt.executeQuery();
-            }catch (Exception e){
-                System.out.println(e.getMessage());
-            }
-
-        });
-        */
+        //lstBebidas.setMaxSize(300,450);
         BorderPane.setMargin(lstBebidas,new Insets(10));
+
+        tpMenu = new JFXTabPane();
+        tabPlatos = new Tab();
+        tabPlatos.setText("Platos");
+        dishes.widthProperty();
+        tabPlatos.setGraphic(new ImageView(dishes));
+        tabPlatos.setContent(lstPlatos);
+        tabBebidas = new Tab();
+        tabBebidas.setText("Bebidas");
+        tabBebidas.setGraphic(new ImageView(drinks));
+        tabBebidas.setContent(lstBebidas);
+        tpMenu.getTabs().addAll(tabPlatos,tabBebidas);
 
         lblPlatos = new Label();
         lblPlatos.setStyle("-fx-font-weight: 900;");
@@ -139,10 +136,10 @@ public class NuevaOrden extends Stage {
         });
         vBox = new VBox();
         vBox.getChildren().addAll(lblPlatos, lblBebidas);
-        hbox = new HBox();
-        hbox.getChildren().addAll(lstPlatos,lstBebidas,vBox);
+        hBox = new HBox();
+        hBox.getChildren().addAll(tpMenu,vBox);
         //s
-        escena = new Scene(hbox,800,450);
+        escena = new Scene(hBox,800,450);
         escena.getStylesheets().add("sample/style/nuevaOrden.css");
     }
 }

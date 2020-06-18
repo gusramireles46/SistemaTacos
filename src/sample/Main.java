@@ -26,27 +26,21 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage){
         //Declaración de los componentes.
-        _txfUsuario = new JFXTextField();
-        _txfUsuario.setMaxWidth(250);
-        _txfUsuario.setPromptText("Nombre de usuario");
         ripUsuario = new JFXRippler(_txfUsuario);
         _pwdUsuario = new JFXPasswordField();
-        _pwdUsuario.setMaxWidth(250);
+        _pwdUsuario.setPrefSize(50,50);
         _pwdUsuario.setPromptText("Contraseña");
+        _pwdUsuario.setStyle("-fx-font-size: 20");
         ripPWD = new JFXRippler(_pwdUsuario);
+        ripPWD.setStyle("-fx-background-color: #A79E8F;");
         _btnAcceso = new JFXButton("Acceder".toUpperCase());
-            _btnAcceso.setStyle("-fx-background-color:GREY;-fx-padding:15");
+            _btnAcceso.setStyle("-fx-background-color:BLACK;-fx-padding:15");
             _btnAcceso.getStyleClass().add("button-raised");
             _btnAcceso.setId("btn-info");
             _btnAcceso.setCursor(Cursor.HAND);
 
         //Construcción de la interfaz
-        vboxUsr = new VBox();
         vboxPwd = new VBox();
-
-        vboxUsr.getChildren().addAll(ripUsuario);
-        vboxUsr.setSpacing(15);
-        vboxUsr.setAlignment(Pos.CENTER);
 
         vboxPwd.getChildren().addAll(ripPWD);
         vboxPwd.setSpacing(15);
@@ -54,12 +48,12 @@ public class Main extends Application {
 
         //BorderPane
         VBox vboxUsrPwd = new VBox();
-        vboxUsrPwd.getChildren().addAll(vboxUsr,vboxPwd);
+        vboxUsrPwd.getChildren().addAll(vboxPwd);
         vboxUsrPwd.setSpacing(30);
         pane = new StackPane();
         pane.getChildren().add(vboxUsrPwd);
         pane.setMaxSize(450,250);
-        pane.setStyle("-fx-background-color:#A8A9AD;-fx-padding:15;-fx-opacity: 0.85; -fx-border-color: #4D4240;-fx-border-width: 5px;" +
+        pane.setStyle("-fx-background-color:#6D4A36;-fx-padding:15;-fx-opacity: 0.85; -fx-border-color: #A79E8F;-fx-border-width: 5px;" +
                 "-fx-border-radius: 20px;-fx-background-radius: 21px");
 
         vbox = new VBox();
@@ -70,12 +64,11 @@ public class Main extends Application {
         BoxBlur blur = new BoxBlur(3,3,3);
         BooleanBinding bb = new BooleanBinding() {
             {
-                super.bind(_txfUsuario.textProperty(),
-                        _pwdUsuario.textProperty());
+                super.bind(_pwdUsuario.textProperty());
             }
             @Override
             protected boolean computeValue() {
-                return (_txfUsuario.getText().isEmpty() || _pwdUsuario.getText().isEmpty());
+                return (_pwdUsuario.getText().isEmpty());
             }
         };
         _btnAcceso.disableProperty().bind(bb);
@@ -93,7 +86,7 @@ public class Main extends Application {
 
         _btnAcceso.setOnAction(e-> {
             //vbox.setEffect(blur);
-            new UsuariosDAO().validarUsuario(_txfUsuario.getText(), _pwdUsuario.getText());
+            new UsuariosDAO().validarUsuario(_pwdUsuario.getText());
             primaryStage.close();
         });
         escena.getStylesheets().add("sample/style/estilos.css");

@@ -1,0 +1,6 @@
+agregar cambios
+git status 
+git add .
+git commit -a -m "comentario"
+git pull origin mater
+git push origin master

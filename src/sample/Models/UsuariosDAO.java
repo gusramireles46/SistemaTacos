@@ -77,11 +77,11 @@ public class UsuariosDAO {
         con = Conexion.conn;
     }
 
-    public void validarUsuario(String usr, String pwd){
+    public void validarUsuario(String pwd){
         UsuariosDAO objU = new UsuariosDAO();
         ResultSet res;
         try {
-            String consulta = "SELECT * FROM tbl_usuario WHERE username = '"+usr+"';";
+            String consulta = "SELECT * FROM tbl_usuario WHERE pwd = '"+pwd+"';";
             PreparedStatement stmt = con.prepareStatement(consulta);
             res = stmt.executeQuery();
             BoxBlur blur = new BoxBlur(3,3,3);

@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class BebidaDAO {
     int idBebida;
@@ -45,6 +46,16 @@ public class BebidaDAO {
     }
 
     private BebidaDAO objB;
+
+    public void insBebida(){
+        String sql = "INSERT INTO tbl_bebida(nombreBebida, descBebida, precioBebida) VALUES('"+nombreBebida+"', '"+descBebida+"', "+precioBebida+");";
+        try {
+            PreparedStatement stmt = Conexion.conn.prepareStatement(sql);
+            stmt.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 
     public ObservableList<BebidaDAO> selAllBebidas (){
         ObservableList<BebidaDAO> listaBebidas = FXCollections.observableArrayList();

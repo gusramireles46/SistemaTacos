@@ -3,7 +3,7 @@
     -fx-background-size: cover, auto;
 }
 .tab{
-    -fx-pref-width: 140;
+    -fx-pref-width: 220;
     -fx-pref-height: 60;
 }
 .tab-header-background{
@@ -11,4 +11,24 @@
 }
 .jfx-tab-pane .tab-selected-line{
     -fx-border-color: #B83F01;
+}
+.button{
+    -fx-font-weight: 900;
+    -fx-background-color: #CCCF99;
+    -fx-border-color:BLACK;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 21px;
+    -fx-font-weight: 900;
+    -fx-font-size: 22;
+    -fx-opacity: 0.85;
+}
+.text-field{
+    -fx-font-weight: 900;
+    -fx-background-color: #CCCF99;
+    -fx-padding:15;-fx-opacity: 0.85;
+    -fx-border-color:BLACK;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 21px;
+    -fx-font-weight: 900;
+    -fx-font-size: 22;
 }

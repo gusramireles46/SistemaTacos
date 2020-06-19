@@ -56,9 +56,7 @@ public class Empleado extends Stage {
     private void CrearGUI() {
         _lblTitle = new Label("Taquería \"El arte del taco\"\n\n");
         _lblMesas1 = new Label("Mesas Adentro");
-        _lblMesas1.setStyle("-fx-background-color:WHITE;-fx-padding:15;-fx-opacity: 0.65;-fx-border-color:BLACK;-fx-border-radius: 20px;-fx-background-radius: 21px;-fx-font-size: 22;");
         _lblMesas2 = new Label("Mesas Afuera");
-        _lblMesas2.setStyle("-fx-background-color:WHITE;-fx-padding:15;-fx-opacity: 0.65;-fx-border-color:BLACK;-fx-border-radius: 20px;-fx-background-radius: 21px;-fx-font-size: 22;");
         _stkMain = new StackPane();
         _mainImg = new JFXButton();
         _mainImg.setGraphic(_img);
@@ -66,7 +64,6 @@ public class Empleado extends Stage {
         _img.setFitWidth(195);
         _mainImg.setPrefSize(195,145);
         _mainImg.setDefaultButton(false);
-        _mainImg.setStyle("-fx-background-color: transparent;");
         _mainImg.setStyle("-fx-background-color:#8B5342;-fx-padding:15;-fx-opacity: 0.65;-fx-border-color:BLACK;-fx-border-radius: 20px;-fx-background-radius: 21px;");
         _mainImg.getStyleClass().add("button-raised");
         _btnOrden = new JFXButton();
@@ -77,28 +74,24 @@ public class Empleado extends Stage {
             new NuevaOrden();
         });
         _btnOrden.setPrefSize(100, 100);
-        _btnOrden.setStyle("-fx-background-color:#8B5342;-fx-padding:15;-fx-opacity: 0.65;-fx-border-color:BLACK;-fx-border-radius: 20px;-fx-background-radius: 21px;");
         _btnOrden.getStyleClass().add("button-raised");
         _btnLista = new JFXButton();
         _btnLista.setGraphic(_imgLista);
         _imgLista.setFitHeight(100);
         _imgLista.setFitWidth(100);
         _btnLista.setPrefSize(100, 100);
-        _btnLista.setStyle("-fx-background-color:#8B5342;-fx-padding:15;-fx-opacity: 0.65;-fx-border-color:BLACK;-fx-border-radius: 20px;-fx-background-radius: 21px;");
         _btnLista.getStyleClass().add("button-raised");
         _btnAbout = new JFXButton();
         _btnAbout.setGraphic(_imgInfo);
         _imgInfo.setFitWidth(100);
         _imgInfo.setFitHeight(100);
         _btnAbout.setPrefSize(100,100);
-        _btnAbout.setStyle("-fx-background-color:#8B5342;-fx-padding:15;-fx-opacity: 0.65;-fx-border-color:BLACK;-fx-border-radius: 20px;-fx-background-radius: 21px;");
         _btnAbout.getStyleClass().add("button-raised");
         _btnSalir = new JFXButton();
         _btnSalir.setGraphic(_imgExit);
         _imgExit.setFitHeight(100);
         _imgExit.setFitWidth(100);
         _btnSalir.setPrefSize(100,100);
-        _btnSalir.setStyle("-fx-background-color:#8B5342;-fx-padding:15;-fx-opacity: 0.65;-fx-border-color:BLACK;-fx-border-radius: 20px;-fx-background-radius: 21px;");
         _btnSalir.getStyleClass().add("button-raised");
         _vbox = new VBox();
         _vboxMesas1 = new VBox();
@@ -112,21 +105,17 @@ public class Empleado extends Stage {
         gprMesas2 = new GridPane();
         gprMesas2.setPadding(new Insets(15));
 
-        _lblTitle.setStyle("-fx-font-size: 32px; -fx-font-weight: 900;");
-
         _btnSalir.setOnAction(event -> {System.exit(0);});
         _vboxTitle.getChildren().addAll(_lblTitle, _mainImg);
         _vboxTitle.setAlignment(Pos.TOP_CENTER);
         _h1.getChildren().addAll(_btnOrden, _btnLista);
         _btnMesas1 = new JFXButton[5][3];
-        //NuevaOrden.noMesa = new int[5][3];
         int cont = 1;
         lugar1 = new int[5][3];
         for(int i = 0; i < 5; i ++){
             for(int j = 0; j < 3; j ++){
                 _btnMesas1[i][j] = new JFXButton();
                 _btnMesas1[i][j].setPrefSize(100,100);
-                _btnMesas1[i][j].setStyle("-fx-background-color:#8B5342;-fx-padding:15;-fx-opacity: 0.75;-fx-border-color:BLACK;-fx-border-radius: 20px;-fx-background-radius: 21px;");
                 _btnMesas1[i][j].getStyleClass().add("button-raised");
                 _btnMesas1[i][j].setGraphic(new ImageView(_imgMesa));
                 lugar1[i][j] = cont++;
@@ -150,7 +139,6 @@ public class Empleado extends Stage {
             for(int j = 0; j < 3; j ++){
                 _btnMesas2[i][j] = new JFXButton();
                 _btnMesas2[i][j].setPrefSize(100,100);
-                _btnMesas2[i][j].setStyle("-fx-background-color:#8B5342;-fx-padding:15;-fx-opacity: 0.75;-fx-border-color:BLACK;-fx-border-radius: 20px;-fx-background-radius: 21px;");
                 _btnMesas2[i][j].getStyleClass().add("button-raised");
                 _btnMesas2[i][j].setGraphic(new ImageView(_imgMesa));
                 lugar2[i][j] = cont++;
@@ -184,7 +172,7 @@ public class Empleado extends Stage {
         _vbox.setSpacing(10);
         _stkMain.getChildren().addAll(_vbox);
 
-        escena = new Scene(_stkMain, 500, 500);
+        escena = new Scene(_stkMain, 1280, 720);
         escena.getStylesheets().add("sample/style/empleado.css");
     }
 }

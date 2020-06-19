@@ -2,3 +2,21 @@
     -fx-background-image: url('../image/taco.jpg');
     -fx-background-size: cover, auto;
 }
+.button{
+    -fx-background-color:#8B5342;
+    -fx-padding:15;
+    -fx-opacity: 0.75;
+    -fx-border-color:BLACK;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 21px;
+}
+.label{
+    -fx-background-color:WHITE;
+    -fx-padding:15;
+    -fx-opacity: 0.65;
+    -fx-border-color:BLACK;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 21px;
+    -fx-font-size: 32px;
+    -fx-font-weight: 900;
+}

@@ -18,12 +18,12 @@ import java.sql.*;
 import java.util.Optional;
 
 public class UsuariosDAO {
-    private int cveUsuario;
-    private String nombre;
-    private String apellido;
-    private String username;
-    private String password;
-    private byte puesto;
+    public static int cveUsuario;
+    public static String nombre;
+    public static String apellido;
+    public static String username;
+    public static String password;
+    public static byte puesto;
     private Connection con;
     //private Main pane = new Main();
 

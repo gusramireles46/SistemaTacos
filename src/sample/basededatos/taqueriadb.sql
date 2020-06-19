@@ -39,6 +39,8 @@ create table tbl_pedido(
     idBebida int,
     cantidadBebida int,
     idMesa int not null,
+	cveUsuario int not null,
+	constraint fk_me foreign key (cveUsuario) references tbl_usuario(cveUsuario),
     constraint fk_pl foreign key (idPlato) references tbl_plato(idPlato),
     constraint fk_beb foreign key (idBebida) references tbl_bebida(idBebida),
     constraint fk_ms foreign key (idMesa) references tbl_mesa(idMesa),
@@ -49,6 +51,7 @@ create table ticket(
     idTicket int not null auto_increment primary key,
     idPedido int,
     idMesa int,
-    precioTotal float(6,2),
+	cveUsuario int,
+    precioTotal float(7,2),
     constraint fk_pedido foreign key (idPedido, idMesa) references tbl_pedido(idPedido, idMesa)
 );

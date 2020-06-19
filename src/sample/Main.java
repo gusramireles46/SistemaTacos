@@ -7,7 +7,6 @@ import javafx.beans.binding.BooleanBinding;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
-import javafx.scene.effect.BoxBlur;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
@@ -19,7 +18,7 @@ public class Main extends Application {
     JFXButton _btnAcceso;
     JFXRippler ripUsuario, ripPWD;
     Image ico = new Image("sample/image/ico.png");
-    public static VBox vbox, vboxUsr, vboxPwd;
+    public static VBox vbox, vboxPwd;
     public static Scene escena;
     public static StackPane pane;
     public static Stage stage;
@@ -31,7 +30,7 @@ public class Main extends Application {
         _pwdUsuario = new JFXPasswordField();
         _pwdUsuario.setPrefSize(50,50);
         _pwdUsuario.setPromptText("Contraseña");
-        _pwdUsuario.setStyle("-fx-font-size: 20");
+        _pwdUsuario.setStyle("-fx-font-size: 20;");
         ripPWD = new JFXRippler(_pwdUsuario);
         ripPWD.setStyle("-fx-background-color: #A79E8F;");
         _btnAcceso = new JFXButton("Acceder".toUpperCase());
@@ -62,7 +61,6 @@ public class Main extends Application {
         vbox.getChildren().addAll(pane,_btnAcceso);
         vbox.setSpacing(30);
         vbox.setAlignment(Pos.CENTER);
-        BoxBlur blur = new BoxBlur(3,3,3);
         BooleanBinding bb = new BooleanBinding() {
             {
                 super.bind(_pwdUsuario.textProperty());
@@ -96,7 +94,7 @@ public class Main extends Application {
         escena.getStylesheets().add("sample/style/main.css");
         primaryStage.setOnCloseRequest(e -> {
             Platform.exit();
-            System.exit(0);
+            //System.exit(0);
         });
     }
 

@@ -22,7 +22,7 @@ public class Administrador extends Stage {
     HBox hbox;
     VBox vbox, titulo, stats, frmBebida, frmTaco;
     Label title, addPlato, addDrink;
-    PieChart chart;
+    //PieChart chart;
     HBox actButtons, actButtonP;
     Button btnGrafico, btnAddTaco, btnAddBebida, btnRegistrarBebida, btnCancelBebida, btnCancelTaco, btnRegistrarTaco, btnSalir;
     StackPane root;
@@ -68,9 +68,13 @@ public class Administrador extends Stage {
         titulo.getChildren().addAll(title);
         titulo.setAlignment(Pos.TOP_CENTER);
         titulo.setSpacing(80);
-        hbox.getChildren().addAll(btnAddTaco, btnAddBebida, btnSalir);
+        hbox.getChildren().addAll(btnAddTaco, btnAddBebida, btnGrafico, btnSalir);
         hbox.setSpacing(15);
         hbox.setAlignment(Pos.CENTER);
+
+        btnGrafico.setOnAction(event -> {
+            new Grafico();
+        });
 
         frmTaco = new VBox();
         frmTaco.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 15px; -fx-background-color: rgba(255,255,255,0.8); -fx-background-radius: 15px;");

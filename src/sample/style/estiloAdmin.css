@@ -1,0 +1,5 @@
+.root{
+    -fx-background-image: url("../image/adminBackground.jpg");
+    -fx-background-size: cover, auto;
+    -fx-background-repeat: no-repeat;
+}
